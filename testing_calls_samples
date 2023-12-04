@@ -1,0 +1,10 @@
+# Get manga
+curl -X GET http://localhost:8080/mangas
+# Get manga by ID
+curl -X GET http://localhost:8080/mangas/3
+# Add manga
+curl -X POST -H "Content-Type: application/json" -d '{"id": "5", "title": "One Piece", "author": "Eiichiro Oda", "rating": 9.9}' http://localhost:8080/mangas
+# Update manga
+curl -X PUT -H "Content-Type: application/json" -d '{"title":"Updated Title","author":"Updated Author","rating":9.0}' http://localhost:8080/mangas/5
+# Delete manga
+curl -X DELETE http://localhost:8080/mangas/5
