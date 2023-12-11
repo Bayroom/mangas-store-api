@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mangas-app:
+    build:
+      context: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mangas-postgres
+    environment:
+      DB_HOST: mangas-postgres
+      DB_PORT: 5432
+      DB_USER: mangas-app
+      DB_NAME: mangas-database
+      DB_PASSWORD: mangas-app-pwd
+
+  mangas-postgres:
+    image: postgres:latest
+    container_name: mangas-postgres
+    environment:
+      POSTGRES_DB: mangas-database
+      POSTGRES_USER: mangas-app
+      POSTGRES_PASSWORD: mangas-app-pwd
+    ports:
+      - "5432:5432"
