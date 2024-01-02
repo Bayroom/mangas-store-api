@@ -13,12 +13,11 @@ This is a simple CRUD API for managing manga books in a store. The API is built 
 
 ## How to Run Locally
 
-1. Install Go and Docker
+1. Install Docker
 2. Clone the repository: `git clone https://github.com/Bayroom/mangas-store-api.git`
 3. Navigate to the project directory: `cd mangas-store-api`
-4. Build the Docker image: `docker build -t mangas-store-api .`
-5. Run the Docker container: `docker run -p 8080:8080 mangas-store-api`
-6. Access the API at `http://localhost:8080`
+4. Build & run Docker images via docker compose: `docker-compose up --build`
+5. Access the API at `http://localhost:8080`
 
 ## Contributing
 
