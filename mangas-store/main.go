@@ -2,7 +2,9 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
+	"os"
 
 	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
@@ -48,7 +50,13 @@ func isTableEmpty(db *sql.DB) (bool, error) {
 // initDB initializes the DB and creates the table(s)
 func initDB() (*sql.DB, error) {
 	// PostgreSQL connection string for Dockerized database
-	connStr := "host=mangas-postgres port=5432 user=mangas-app dbname=mangas-database sslmode=disable password=mangas-app-pwd"
+	connStr := fmt.Sprintf("host=%s port=%s user=%s dbname=%s sslmode=disable password=%s",
+		os.Getenv("DB_HOST"),
+		os.Getenv("DB_PORT"),
+		os.Getenv("DB_USER"),
+		os.Getenv("DB_NAME"),
+		os.Getenv("DB_PASSWORD"),
+	)
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, err
